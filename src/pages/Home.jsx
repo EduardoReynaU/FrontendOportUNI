@@ -39,7 +39,7 @@ export default function Home() {
 
             <SpaceBetween size="xs">
               <Button variant="primary" onClick={handleGitHub}>Entrar con GitHub</Button>
-              <Button variant="normal" onClick={handleGmail}>Entrar con Gmail</Button>
+              <Button variant="normal" onClick={handleGmail}>Entrar con Gmail.</Button>
             </SpaceBetween>
 
           </SpaceBetween>
