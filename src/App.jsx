@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './Home.jsx';
-import EstudianteLogin from './EstudianteLogin.jsx';
-import EstudianteInicio from './EstudianteInicio';
-import ConvocanteLogin from './ConvocanteLogin.jsx';
-import ConvocanteInicio from './ConvocanteInicio.jsx';
-import EstudiantePerfil from './EstudiantePerfil';
-import EstudianteSeguimiento from './EstudianteSeguimiento.jsx';
-
+import Home from './pages/Home.jsx';
+import EstudianteLogin from './pages/Estudiantelogin.jsx';
+import EstudianteInicio from './pages/EstudianteInicio';
+import ConvocanteLogin from './pages/ConvocanteLogin.jsx';
+import ConvocanteInicio from './pages/ConvocanteInicio.jsx';
+import EstudiantePerfil from './pages/EstudiantePerfil';
+import EstudianteSeguimiento from './pages/EstudianteSeguimiento.jsx';
+import SeleccionRol from './pages/SeleccionRol';
+import Callback from './pages/Callback.jsx'; 
 
 function App() {
   const tipoUsuario = localStorage.getItem('logueado');
@@ -28,7 +29,8 @@ function App() {
         <Route path="/convocante" element={<ConvocanteInicio />} />
         <Route path="/estudiante-perfil" element={<EstudiantePerfil />} />
         <Route path="/estudiante-seguimiento" element={<EstudianteSeguimiento />} />
-
+        <Route path="/seleccion-rol" element={<SeleccionRol />} />
+        <Route path="/callback" element={<Callback />} /> 
       </Routes>
     </Router>
   );
