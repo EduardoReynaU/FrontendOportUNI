@@ -1,3 +1,6 @@
-node_modules
+node_modules/*
 dist
+SISTEMA-RECOMENDACION/package-lock.json
+node_modules/
+Dockerfile
 package-lock.json

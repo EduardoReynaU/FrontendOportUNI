@@ -12,23 +12,16 @@ export default function Home() {
   const navigate = useNavigate();
 
   const handleGitHub = () => {
-    const perfil = {
-      nombre: 'Cristina G.',
-      email: 'cristina@example.com',
-      origen: 'GitHub'
-    };
-    localStorage.setItem('perfilTemporal', JSON.stringify(perfil));
-    navigate('/seleccion-rol');
+    const clientId = import.meta.env.VITE_GITHUB_CLIENT_ID;
+    const redirectUri = import.meta.env.VITE_GITHUB_REDIRECT_URI;
+
+    // Redirige al flujo de autenticación de GitHub
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=read:user user:email`;
   };
 
   const handleGmail = () => {
-    const perfil = {
-      nombre: 'Cristina G.',
-      email: 'cristina@gmail.com',
-      origen: 'Gmail'
-    };
-    localStorage.setItem('perfilTemporal', JSON.stringify(perfil));
-    navigate('/seleccion-rol');
+    // Aquí podrías implementar algo similar para Google OAuth si ya lo tienes configurado
+    alert('Integración con Gmail aún no implementada.');
   };
 
   return (
@@ -44,7 +37,6 @@ export default function Home() {
           <SpaceBetween size="l">
             <p>Conecta tu cuenta para continuar:</p>
 
-            {/* Separación vertical de botones */}
             <SpaceBetween size="xs">
               <Button variant="primary" onClick={handleGitHub}>Entrar con GitHub</Button>
               <Button variant="normal" onClick={handleGmail}>Entrar con Gmail</Button>

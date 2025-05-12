@@ -24,5 +24,7 @@ RUN sed -i 's/listen       80;/listen       8080;/g' /etc/nginx/conf.d/default.c
 # Exponer el puerto que Cloud Run usará
 EXPOSE 8080
 
+
+
 # Comando para iniciar NGINX en primer plano
 CMD ["nginx", "-g", "daemon off;"]
