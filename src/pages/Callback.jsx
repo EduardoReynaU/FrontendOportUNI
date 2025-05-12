@@ -9,7 +9,6 @@ export default function Callback() {
     const code = params.get('code');
 
     if (code) {
-      // Llamada al backend usando GraphQL para intercambiar el code por un token
       fetch(import.meta.env.VITE_GRAPHQL_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -29,22 +28,19 @@ export default function Callback() {
           if (data.data && data.data.loginWithGithub) {
             const { token } = data.data.loginWithGithub;
             localStorage.setItem('jwt_token', token);
-            // ✅ Redirige a la página principal o dashboard después del login
-            navigate('/estudiante');
-          } else {
-            alert('Error en la autenticación con GitHub');
-            navigate('/login-estudiante');
           }
+          // ✅ Redirige siempre a /estudiante
+          navigate('/estudiante');
         })
         .catch(() => {
-          alert('Error de red en la autenticación');
-          navigate('/login-estudiante');
+          // Incluso si hay error, redirige igual
+          navigate('/estudiante');
         });
     } else {
-      alert('No se recibió el código de autenticación');
-      navigate('/login-estudiante');
+      // Si no hay código, redirige directamente
+      navigate('/estudiante');
     }
   }, [navigate]);
 
-  return <p>Procesando autenticación con GitHub, por favor espera...</p>;
+  return null; // No mostramos nada, redirección inmediata
 }
